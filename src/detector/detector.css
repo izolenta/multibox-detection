@@ -1,20 +1,25 @@
 .positioned {
     position: absolute;
-    border: 2px solid greenyellow;
+    border: 8px solid greenyellow;
 }
 
 .wrapper {
-    margin-top: 16px;
+    margin-top: 72px;
     position: relative;
 }
 
 .header {
     position: absolute;
-    height: 20px;
+    height: 60px;
     padding: 2px 4px;
     background: greenyellow;
     color: darkgreen;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 48px;
+    line-height: 60px;
     white-space: nowrap;
+}
+
+.headline {
+    font-size: 48px;
+    margin-bottom: 24px;
 }

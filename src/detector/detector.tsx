@@ -1,5 +1,4 @@
 import './detector.css';
-//import cocoSsd from '@tensorflow-models/coco-ssd'
 import {ChangeEvent, ReactNode, useEffect, useRef, useState} from "react";
 import {DetectedObject, ObjectDetection} from "@tensorflow-models/coco-ssd";
 
@@ -26,7 +25,7 @@ const Detector = () => {
     let nodes = [];
     for (let next of boundingData) {
       let positionFrame = {left: next.bbox[0]+'px', top: next.bbox[1]+'px', width: next.bbox[2]+'px', height: next.bbox[3]+'px'};
-      let positionHeader = {left: next.bbox[0]+'px', top: next.bbox[1]+'px'};
+      let positionHeader = {left: next.bbox[0]+'px', top: (next.bbox[1]-60)+'px'};
       let box = <div className={'positioned'} style={positionFrame}></div>;
       let header = <div className={'header'} style={positionHeader}>{next.class} {next.score.toFixed(2)}</div>;
       nodes.push(box);
@@ -55,13 +54,13 @@ const Detector = () => {
         let objects = await model.detect(imageRef.current!)
         setBoundingData(objects);
       };
-
     }
   }
 
   if (isInitialized) {
     return (
       <div>
+        <div className={'headline'}>Multibox Objects Pre-Trained model</div>
         <input className={'input'} type='file' accept={'image/*'} multiple={false} onChange={(e) => fileLoaded(e)}/>
         <div className={'wrapper'}>
           <img ref={imageRef} width={1000}></img>
